@@ -6,6 +6,7 @@ import LogoutButton from "@/components/LogoutButton";
 import { motion } from 'framer-motion';
 import "./globals.css";
 import { usePathname } from 'next/navigation'; // Import usePathname
+import { relative } from "path";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname(); // Get the current path
@@ -26,9 +27,10 @@ export default function RootLayout({ children }) {
               transition={{ duration: 0.8 }}
             >
               <nav className="flex justify-between max-w-6xl mx-auto">
-                <Link href="/" className="text-lg font-bold hover:text-[#66d9ef] transition">
-                  QR Menu Platform
-                </Link>
+              <Link href="/" className="text-lg font-bold hover:text-[#66d9ef] transition" style={{ height: '40px' }}>
+  <img src="/cp3.png" alt="" style={{ height: '70px' ,position:"relative", bottom:"15px"}} /> {/* Adjust the height here */}
+</Link>
+
                 <AuthStatus />
               </nav>
             </motion.header>
@@ -37,7 +39,7 @@ export default function RootLayout({ children }) {
           <main className="flex-1">{children}</main>
 
           <footer className="bg-[#2f343a] text-[#ccd6f6] text-center py-4">
-            <p> 2024 QR Menu Platform</p>
+            <p> 2024 Click2Menu</p>
           </footer>
         </SessionProvider>
       </body>

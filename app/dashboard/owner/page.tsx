@@ -281,7 +281,7 @@ export default function MultiStepForm() {
 
       {/* Footer at Bottom */}
       {/* <footer className="bg-[#2c3e50] text-white text-center py-4 mt-auto">
-        <p>© 2024 QR Menu Platform</p>
+        <p>© 2024 Click2Menu</p>
       </footer> */}
     </div>
   );

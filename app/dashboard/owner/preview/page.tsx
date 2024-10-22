@@ -14,14 +14,14 @@ export default function RootLayout({ children }) {
           <header className="bg-gray-800 text-white p-4">
             <nav className="flex justify-between max-w-6xl mx-auto">
               <Link href="/" className="text-lg font-bold">
-                QR Menu Platform
+              Click2Menu
               </Link>
               <AuthStatus />
             </nav>
           </header>
           <main>{children}</main>
           <footer className="bg-gray-800 text-white text-center py-4">
-            <p>© 2024 QR Menu Platform</p>
+            <p>© 2024 Click2Menu</p>
           </footer>
         </SessionProvider>
       </body>

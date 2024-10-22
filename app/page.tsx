@@ -18,7 +18,7 @@ export default function LandingPage() {
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 1 }}
         >
-          Welcome to QR Menu Platform
+          Welcome to Click2Menu
         </motion.h1>
         <motion.p 
           className="mt-4 text-lg text-[#34495e]" 

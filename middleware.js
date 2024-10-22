@@ -5,9 +5,9 @@ export async function middleware(req) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
   const { pathname } = req.nextUrl;
 
-  console.log('Middleware triggered:');
-  console.log('Path:', pathname);
-  console.log('Token:', token);
+  // console.log('Middleware triggered:');
+  // console.log('Path:', pathname);
+  // console.log('Token:', token);
 
   if (!token && pathname.startsWith('/dashboard')) {
     console.log('No token found, redirecting...');

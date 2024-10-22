@@ -24,8 +24,8 @@ const MenuPage = async ({ params }) => {
   const restaurantLogo = menuItem?.logo || '/path-to-default-logo.jpg';
 
   // Log these fields after fetching them from the document
-  console.log('Restaurant Name:', restaurantName);
-  console.log('Restaurant Address:', restaurantAddress);
+  // console.log('Restaurant Name:', restaurantName);
+  // console.log('Restaurant Address:', restaurantAddress);
   // console.log(restaurantLogo);
   
   return (
