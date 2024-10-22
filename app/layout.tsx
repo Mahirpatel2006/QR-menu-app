@@ -2,7 +2,7 @@
 import { SessionProvider } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import LogoutButton from "@/components/LogoutButton";
+import LogoutButton from "@/Components/LogoutButton";
 import { motion } from 'framer-motion';
 import "./globals.css";
 import { usePathname } from 'next/navigation'; // Import usePathname
