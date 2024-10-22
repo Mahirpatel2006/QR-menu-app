@@ -14,7 +14,7 @@ async function main() {
 
 main()
   .then(() => {
-    console.log('Database seeded successfully');
+    ('Database seeded successfully');
   })
   .catch((e) => {
     console.error(e);

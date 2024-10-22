@@ -25,3 +25,43 @@ body {
     text-wrap: balance;
   }
 }
+/* globals.css */
+
+/* Floating animation for decorative circles */
+/* globals.css */
+
+/* Floating animation for decorative circles */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float.delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Custom cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor {
+  transform: scale(1.5) translate(-50%, -50%);
+  background-color: rgba(72, 187, 120, 0.7); /* Custom color when hovering */
+}
+
+
