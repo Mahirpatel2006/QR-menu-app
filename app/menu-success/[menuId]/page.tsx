@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { motion } from "framer-motion";
 import Confetti from "react-confetti";  // Import Confetti component
-import { useWindowSize } from "react-use";  // Optional to dynamically adjust the confetti size
+// import { useWindowSize } from "react-use";  // Optional to dynamically adjust the confetti size
 
 const MenuSuccessPage = ({ params }) => {
   const { menuId } = params;
