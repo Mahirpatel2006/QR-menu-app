@@ -1,11 +1,11 @@
-// app/api/menus/route.js
+import { MongoClient } from 'mongodb';
 import clientPromise from '@/lib/mongodb';
 
-export async function POST(req) {
+export async function POST(req: Request) {
   const formData = await req.json();
 
   try {
-    const client = await clientPromise;
+    const client: MongoClient = await clientPromise;
     const db = client.db();
 
     // Insert the form data into the 'menus' collection
