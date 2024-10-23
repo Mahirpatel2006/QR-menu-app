@@ -2,7 +2,8 @@
 import { SessionProvider } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import LogoutButton from "@/components/LogoutButton";
+import { signOut } from 'next-auth/react';
+// import LogoutButton from "@/components/LogoutButton";
 import { motion } from 'framer-motion';
 import "./globals.css";
 import { usePathname } from 'next/navigation'; // Import usePathname
@@ -57,7 +58,12 @@ function AuthStatus() {
       {session?.user ? (
         <>
           <span className="mr-4">Hello, {session.user.name}</span>
-          <LogoutButton />
+          <button
+      onClick={() => signOut({ callbackUrl: '/' })} // Sign out and redirect to the home page
+      className="text-red-500 hover:text-red-700"
+    >
+      Log Out
+    </button>
         </>
       ) : (
         <Link href="/auth/signin" className="mr-4 hover:text-[#66d9ef] transition">
