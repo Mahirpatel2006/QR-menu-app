@@ -104,7 +104,7 @@ const MenuPage = async ({ params }) => {
                               {item.description || 'Delicious food description here.'}
                             </p>
                             <div className="flex justify-between items-center">
-                              <span className="text-green-600 font-bold">${item.price}</span>
+                              <span className="text-green-600 font-bold">₹{item.price}</span>
                             </div>
                           </div>
                         ))

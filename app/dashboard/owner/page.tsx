@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
-  const [isPreview, setIsPreview] = useState(false);
+  // const [isPreview, setIsPreview] = useState(false);
   const [loading, setLoading] = useState(false);
   const [razorpayLoaded, setRazorpayLoaded] = useState(false);
   const [formData, setFormData] = useState({
@@ -145,11 +145,12 @@ export default function MultiStepForm() {
       <div className="relative z-10 flex-1 flex items-center justify-center">
         <div className="max-w-md w-full p-8 bg-white shadow-md rounded-md">
           <h1 className="text-2xl font-bold text-center mb-6">
-            {isPreview ? "Preview Your Menu" : "Create Your Menu"}
+            {/* {isPreview ? "Preview Your Menu" : "Create Your Menu"} */}
+            create your menu
           </h1>
 
           {/* Preview Mode */}
-          {isPreview ? (
+          {/* {isPreview ? (
             <div>
               <h2 className="text-xl font-semibold">Business Name: {formData.name}</h2>
               <p>Address: {formData.address}</p>
@@ -187,7 +188,7 @@ export default function MultiStepForm() {
                 Edit Menu
               </button>
             </div>
-          ) : (
+          ) : ( */}
             <>
               {/* Circular Progress Bar */}
               <div className="mb-4 flex items-center justify-center">
@@ -258,12 +259,12 @@ export default function MultiStepForm() {
                 )}
                 {step === steps && (
                   <>
-                    <button
+                    {/* <button
                       onClick={() => handleSubmit(true)}
                       className="bg-green-500 text-white py-2 px-4 rounded-md"
                     >
                       Preview
-                    </button>
+                    </button> */}
                     <button
                       onClick={() => handleSubmit(false)}
                       className="bg-blue-500 text-white py-2 px-4 rounded-md"
@@ -275,7 +276,7 @@ export default function MultiStepForm() {
                 )}
               </div>
             </>
-          )}
+          
         </div>
       </div>
 

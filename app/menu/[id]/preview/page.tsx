@@ -23,7 +23,7 @@ export default async function MenuPreview({ params }) {
           <ul>
             {menuItem.menu[category].map((item) => (
               <li key={item.name}>
-                {item.name}: ${item.price} - {item.description}
+                {item.name}: ₹{item.price} - {item.description}
               </li>
             ))}
           </ul>
