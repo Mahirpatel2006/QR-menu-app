@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import "./globals.css";
 import { usePathname } from 'next/navigation'; // Import usePathname
 
-export default function RootLayout({ children }:any) {
+export default function RootLayout({ children }) {
   const pathname = usePathname(); // Get the current path
 
   // Check if the current page is MenuPage based on the path

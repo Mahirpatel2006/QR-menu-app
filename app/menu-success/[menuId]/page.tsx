@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Confetti from "react-confetti";  // Import Confetti component
 // import { useWindowSize } from "react-use";  // Optional to dynamically adjust the confetti size
 
-const MenuSuccessPage = ({ params }:any) => {
+const MenuSuccessPage = ({ params }) => {
   const { menuId } = params;
   const menuLink = `http://localhost:3000/menu/${menuId}`; // Update this for production
   const canvasRef = useRef(null);

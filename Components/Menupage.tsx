@@ -1,7 +1,7 @@
 // MenuPage.tsx
 'use client';
 
-const MenuPage = ({ formData }:any) => {
+const MenuPage = ({ formData }) => {
   const { businessType, name, address, logo, categories, menu } = formData;
 
   return (
@@ -31,13 +31,13 @@ const MenuPage = ({ formData }:any) => {
         <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">Menu</h2>
 
         {/* Categories and Menu Items */}
-        {categories.map((category:any, index:any) => (
+        {categories.map((category, index) => (
           <div key={index} className="mb-12">
             <h3 className="text-2xl font-bold text-gray-700 mb-4 border-b pb-2">{category}</h3>
 
             <ul>
               {menu[category]?.length > 0 ? (
-                menu[category].map((item:any, itemIndex:any) => (
+                menu[category].map((item, itemIndex) => (
                   <li
                     key={itemIndex}
                     className="flex justify-between items-center py-4 border-b border-gray-200"
