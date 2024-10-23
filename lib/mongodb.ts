@@ -11,7 +11,7 @@ let clientPromise: Promise<MongoClient>;
 
 declare global {
   // Allow global type for the Node.js global object to avoid type conflicts
-  var _mongoClientPromise: Promise<MongoClient> | undefined;
+  const _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
 if (process.env.NODE_ENV === 'development') {
