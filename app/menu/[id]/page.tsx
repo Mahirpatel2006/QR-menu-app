@@ -2,10 +2,10 @@
 import { ObjectId } from 'mongodb';
 import clientPromise from '@/lib/mongodb';
 
-const MenuPage = async ({ params }) => {
+const MenuPage = async ({ params }:any) => {
   const { id } = params;
 
-  const client = await clientPromise;
+  const client = await clientPromise
   const db = client.db();
 
   // Fetch the menu data from MongoDB using the provided id
@@ -59,7 +59,7 @@ const MenuPage = async ({ params }) => {
             <h2 className="text-xl font-bold text-red-600 mb-4">Menu Categories</h2>
             <ul className="flex overflow-x-auto space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4 pb-2">
               {menuItem.categories.length ? (
-                menuItem.categories.map((category, index) => (
+                menuItem.categories.map((category:any, index:any) => (
                   <li key={index} className="flex-shrink-0 lg:flex-grow">
                     <a 
                       href={`#${category.replace(/\s+/g, '-').toLowerCase()}`} 
@@ -81,7 +81,7 @@ const MenuPage = async ({ params }) => {
             
             {/* Display each category */}
             {menuItem.categories.length ? (
-              menuItem.categories.map((category) => {
+              menuItem.categories.map((category:any) => {
                 const items = menuItem.menu[category] || [];
 
                 return (
@@ -94,7 +94,7 @@ const MenuPage = async ({ params }) => {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
                       {items.length > 0 ? (
-                        items.map((item, idx) => (
+                        items.map((item:any, idx:any) => (
                           <div
                             key={idx}
                             className="bg-gradient-to-r from-white to-orange-50 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow w-full"
