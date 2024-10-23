@@ -38,7 +38,7 @@ export default function MultiStepForm() {
         category: [],
       }}
       onSubmit={(values) => {
-        // console.log('Form Submitted', values);
+        console.log('Form Submitted', values);
       }}
     >
       {({ isSubmitting }) => (

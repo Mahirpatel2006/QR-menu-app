@@ -3,7 +3,7 @@
 import { SessionProvider } from "next-auth/react"; 
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import LogoutButton from "@/components/LogoutButton";
+import LogoutButton from "@/Components/LogoutButton";
 import "./globals.css";
 
 export default function RootLayout({ children }) {
