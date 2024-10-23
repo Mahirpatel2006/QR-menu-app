@@ -4,6 +4,7 @@ import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import clientPromise from '@/lib/mongodb';
 import bcrypt from 'bcryptjs';
 
+// NextAuth options remain unchanged
 export const authOptions = {
   providers: [
     CredentialsProvider({
@@ -47,12 +48,10 @@ export const authOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-      // Include user id in the session object
-      session.user.id = token.id; // Add user ID to session if you want
+      session.user.id = token.id; // Add user ID to session
       return session;
     },
     async jwt({ token, user }) {
-      // Add user to the token right after sign in
       if (user) {
         token.id = user.id; // Ensure that user ID is included in the token
       }
@@ -64,6 +63,6 @@ export const authOptions = {
   },
 };
 
-// Define and export the handler for GET and POST requests
+// Export the NextAuth handler for GET and POST requests
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
