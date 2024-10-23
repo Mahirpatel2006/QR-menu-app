@@ -4,8 +4,8 @@ import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import clientPromise from '@/lib/mongodb';
 import bcrypt from 'bcryptjs';
 
-// NextAuth options remain unchanged
-export const authOptions = {
+// NextAuth options
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -31,7 +31,6 @@ export const authOptions = {
             throw new Error('Incorrect password');
           }
 
-          // If credentials are valid, return the user object
           return { id: user._id, email: user.email, name: user.name };
         } catch (error) {
           console.error('Error in authorize function:', error);
