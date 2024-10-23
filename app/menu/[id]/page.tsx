@@ -12,7 +12,7 @@ const MenuPage = async ({ params }) => {
   const menuItem = await db.collection('menus').findOne({ _id: new ObjectId(id) });
 
   // Fetch restaurant details (restaurantName, logo, address)
-  const restaurantInfo = await db.collection('restaurantInfo').findOne();
+  // const restaurantInfo = await db.collection('restaurantInfo').findOne();
 
   if (!menuItem) {
     return <p>Menu not found</p>;
@@ -81,7 +81,7 @@ const MenuPage = async ({ params }) => {
             
             {/* Display each category */}
             {menuItem.categories.length ? (
-              menuItem.categories.map((category, index) => {
+              menuItem.categories.map((category) => {
                 const items = menuItem.menu[category] || [];
 
                 return (

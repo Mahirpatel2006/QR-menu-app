@@ -13,7 +13,7 @@ const MenuSuccessPage = ({ params }) => {
   const [menuData, setMenuData] = useState(null);
   const [error, setError] = useState(null);
 
-  const { width, height } = useWindowSize();  // Get window size to adjust confetti
+  // const { width, height } = useWindowSize();  // Get window size to adjust confetti
 
   // Fetch the menu data when the page loads
   useEffect(() => {
