@@ -1,4 +1,3 @@
-// app/api/auth/[...nextauth]/route.js
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
@@ -65,6 +64,6 @@ export const authOptions = {
   },
 };
 
-// Default handler export for all HTTP methods
+// Define and export the handler for GET and POST requests
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
