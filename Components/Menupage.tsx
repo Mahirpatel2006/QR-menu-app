@@ -1,7 +1,23 @@
-// MenuPage.tsx
 'use client';
 
-const MenuPage = ({ formData }) => {
+type MenuItem = {
+  name: string;
+  description?: string;
+  price: number;
+};
+
+type FormDataType = {
+  businessType: string;
+  name: string;
+  address: string;
+  logo?: File;
+  categories: string[];
+  menu: {
+    [category: string]: MenuItem[];
+  };
+};
+
+const MenuPage = ({ formData }: { formData: FormDataType }) => {
   const { businessType, name, address, logo, categories, menu } = formData;
 
   return (
@@ -63,4 +79,3 @@ const MenuPage = ({ formData }) => {
 };
 
 export default MenuPage;
-     
