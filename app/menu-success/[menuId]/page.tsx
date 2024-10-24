@@ -136,7 +136,7 @@ const MenuSuccessPage = ({ params }: { params: Params }) => {
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               <h2 className="text-lg font-semibold text-[#2c3e50]">Menu Details</h2>
-              <p className="mt-2 text-gray-600">Menu Title: {menuData.title}</p>
+              {/* <p className="mt-2 text-gray-600">Menu Title: {menuData.name}</p> */}
               <p className="mt-1 text-gray-600">Items: {menuData.items.join(", ")}</p>
             </motion.div>
           )
