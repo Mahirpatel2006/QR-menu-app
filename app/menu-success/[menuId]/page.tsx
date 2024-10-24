@@ -3,17 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { motion } from "framer-motion";
-import Confetti from "react-confetti";  // Import Confetti component
-// import { useWindowSize } from "react-use";  // Optional to dynamically adjust the confetti size
+import Confetti from "react-confetti";
 
-const MenuSuccessPage = ({ params }:any) => {
+interface Params {
+  menuId: string;
+}
+
+const MenuSuccessPage = ({ params }: { params: Params }) => {
   const { menuId } = params;
   const menuLink = `http://localhost:3000/menu/${menuId}`; // Update this for production
-  const canvasRef = useRef(null);
-  const [menuData, setMenuData] = useState(null);
-  const [error, setError] = useState(null);
-
-  // const { width, height } = useWindowSize();  // Get window size to adjust confetti
+  const canvasRef = useRef<HTMLDivElement | null>(null);
+  const [menuData, setMenuData] = useState<any | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch the menu data when the page loads
   useEffect(() => {
@@ -35,7 +36,7 @@ const MenuSuccessPage = ({ params }:any) => {
   }, [menuId]);
 
   const handleDownload = () => {
-    const canvas = canvasRef.current.querySelector("canvas");
+    const canvas = canvasRef.current?.querySelector("canvas");
     if (canvas) {
       const pngUrl = canvas
         .toDataURL("image/png")
@@ -49,19 +50,8 @@ const MenuSuccessPage = ({ params }:any) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-hidden">
-
       {/* Confetti Effect */}
-      <Confetti
-  width={2080}   // Set custom width for the confetti area
-  height={500}  // Set custom height for the confetti area
-  numberOfPieces={300}  // Adjust number of confetti pieces (density)
-  recycle={false}  // Confetti will not recycle, just falls once
-  x={500}  // X-coordinate from where confetti starts (shift right)
-  y={50}   // Y-coordinate from where confetti starts (shift down)
-  gravity={0.1}  // Adjust how fast the confetti falls (lower means slower)
-  wind={0.02}  // Add some wind to the confetti (make it drift sideways)
-  initialVelocityY={5}  // Control initial velocity of confetti pieces
-/>
+      <Confetti width={window.innerWidth} height={window.innerHeight} numberOfPieces={300} recycle={false} />
 
       {/* Background Decorative Shapes */}
       <div className="absolute top-0 left-0 w-full h-full">
@@ -100,6 +90,9 @@ const MenuSuccessPage = ({ params }:any) => {
         >
           {menuLink}
         </motion.a>
+
+        {/* QR Code Section */}
+
 
         {/* QR Code Section */}
         <motion.div 

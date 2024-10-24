@@ -1,8 +1,7 @@
-// app/menu/[id]/page.tsx
 import { ObjectId } from 'mongodb';
 import clientPromise from '@/lib/mongodb';
 
-const MenuPage = async ({ params }) => {
+const MenuPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
   const client = await clientPromise;
@@ -10,9 +9,6 @@ const MenuPage = async ({ params }) => {
 
   // Fetch the menu data from MongoDB using the provided id
   const menuItem = await db.collection('menus').findOne({ _id: new ObjectId(id) });
-
-  // Fetch restaurant details (restaurantName, logo, address)
-  // const restaurantInfo = await db.collection('restaurantInfo').findOne();
 
   if (!menuItem) {
     return <p>Menu not found</p>;
@@ -23,11 +19,6 @@ const MenuPage = async ({ params }) => {
   const restaurantAddress = menuItem?.address || 'Address not available';
   const restaurantLogo = menuItem?.logo || '/path-to-default-logo.jpg';
 
-  // Log these fields after fetching them from the document
-  console.log('Restaurant Name:', restaurantName);
-  console.log('Restaurant Address:', restaurantAddress);
-  // console.log(restaurantLogo);
-  
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-100 via-red-100 to-yellow-100">
       <div className="container mx-auto px-4 lg:px-10 py-8">
@@ -47,9 +38,7 @@ const MenuPage = async ({ params }) => {
               className="h-20 rounded-full border-4 border-white shadow-lg"
             />
             {/* Restaurant Name */}
-            <h1 className="text-3xl text-white font-bold mt-2 ">{restaurantName}</h1>
-            {/* Restaurant Address */}
-            {/* <p className="text-lg text-white absolute top-46 right-4">{restaurantAddress}</p> */}
+            <h1 className="text-3xl text-white font-bold mt-2">{restaurantName}</h1>
           </div>
         </div>
         {/* Menu Categories and Items */}
@@ -59,7 +48,7 @@ const MenuPage = async ({ params }) => {
             <h2 className="text-xl font-bold text-red-600 mb-4">Menu Categories</h2>
             <ul className="flex overflow-x-auto space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4 pb-2">
               {menuItem.categories.length ? (
-                menuItem.categories.map((category, index) => (
+                menuItem.categories.map((category: string, index: number) => (
                   <li key={index} className="flex-shrink-0 lg:flex-grow">
                     <a 
                       href={`#${category.replace(/\s+/g, '-').toLowerCase()}`} 
@@ -81,7 +70,7 @@ const MenuPage = async ({ params }) => {
             
             {/* Display each category */}
             {menuItem.categories.length ? (
-              menuItem.categories.map((category) => {
+              menuItem.categories.map((category: string) => {
                 const items = menuItem.menu[category] || [];
 
                 return (
@@ -94,7 +83,7 @@ const MenuPage = async ({ params }) => {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
                       {items.length > 0 ? (
-                        items.map((item, idx) => (
+                        items.map((item: { name: string; description?: string; price: number }, idx: number) => (
                           <div
                             key={idx}
                             className="bg-gradient-to-r from-white to-orange-50 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow w-full"
