@@ -107,7 +107,7 @@ export default function MultiStepForm() {
       console.error("Razorpay SDK not loaded.");
       return;
     }
-
+  
     try {
       setLoading(true);
       const response = await fetch("/api/razorpay-order", {
@@ -115,16 +115,24 @@ export default function MultiStepForm() {
         body: JSON.stringify({ amount: paymentAmount }),
         headers: { "Content-Type": "application/json" },
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Error creating Razorpay order:", errorData);
         return;
       }
-
+  
       const data = await response.json();
+  
+      // Ensure `process.env.RAZORPAY_KEY_ID` is defined, or throw an error.
+      const razorpayKey = process.env.RAZORPAY_KEY_ID || '';
+      if (!razorpayKey) {
+        console.error("Razorpay key ID is not set.");
+        return;
+      }
+  
       const options = {
-        key: process.env.RAZORPAY_KEY_ID,
+        key: razorpayKey, // Ensure this is always a string.
         amount: data.amount,
         currency: data.currency,
         name: "Your Company Name",
@@ -146,7 +154,7 @@ export default function MultiStepForm() {
           color: "#F37254",
         },
       };
-
+  
       const razorpay = new window.Razorpay(options);
       razorpay.open();
     } catch (error) {
@@ -155,6 +163,7 @@ export default function MultiStepForm() {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="relative flex flex-col min-h-screen bg-[#f0f4f8]">
