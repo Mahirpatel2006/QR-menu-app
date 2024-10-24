@@ -1,12 +1,17 @@
 import Razorpay from "razorpay";
 import { NextResponse } from "next/server";
 
+// Ensure the environment variables are defined
+if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+  throw new Error("Razorpay key_id and key_secret must be defined in the environment variables.");
+}
+
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
+  key_id: process.env.RAZORPAY_KEY_ID as string, // Type assertion to avoid 'string | undefined' error
+  key_secret: process.env.RAZORPAY_KEY_SECRET as string,
 });
 
-export async function POST(request) {
+export async function POST(request: Request) {
   try {
     const { amount } = await request.json();
 
