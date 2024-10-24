@@ -254,11 +254,12 @@ export default function MultiStepForm() {
             )}
             {step === steps && (
               <button
-                onClick={handleSubmit}
-                className="bg-blue-500 text-white py-2 px-4 rounded-md"
-              >
-                Submit
-              </button>
+              onClick={() => handleSubmit()}
+              className="bg-blue-500 text-white py-2 px-4 rounded-md"
+              disabled={!razorpayLoaded || loading} // Disable the button when loading
+            >
+              {loading ? "Processing..." : "Submit & Pay"}
+            </button>
             )}
           </div>
         </div>
