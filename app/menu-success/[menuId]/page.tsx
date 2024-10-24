@@ -9,14 +9,19 @@ interface Params {
   menuId: string;
 }
 
+interface MenuData {
+  name: string;
+  logo: string;
+  // Add other relevant fields based on your API response
+}
+
 const MenuSuccessPage = ({ params }: { params: Params }) => {
   const { menuId } = params;
   const menuLink = `http://localhost:3000/menu/${menuId}`; // Update this for production
   const canvasRef = useRef<HTMLDivElement | null>(null);
-  const [menuData, setMenuData] = useState<any | null>(null);
+  const [menuData, setMenuData] = useState<MenuData | null>(null); // Use the defined type
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch the menu data when the page loads
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +29,7 @@ const MenuSuccessPage = ({ params }: { params: Params }) => {
         if (!response.ok) {
           throw new Error("Error fetching data");
         }
-        const data = await response.json();
+        const data: MenuData = await response.json(); // Specify the type of data being fetched
         setMenuData(data);
       } catch (error) {
         console.error("Error:", error);
