@@ -9,12 +9,22 @@ import Step4 from "@/Components/Step4";
 import Step5 from "@/Components/Step5";
 import { useRouter } from "next/navigation";
 
+interface FormData {
+  businessType: string;
+  name: string;
+  address: string;
+  logo: File | null;
+  categories: string[];
+  menu: Record<string, any>; // Adjust according to the menu structure
+  menuId: string;
+}
+
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
   // const [isPreview, setIsPreview] = useState(false);
   const [loading, setLoading] = useState(false);
   const [razorpayLoaded, setRazorpayLoaded] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     businessType: "",
     name: "",
     address: "",
@@ -43,22 +53,18 @@ export default function MultiStepForm() {
   const handleNextStep = () => setStep((prevStep) => prevStep + 1);
   const handlePreviousStep = () => setStep((prevStep) => prevStep - 1);
 
-  const updateFormData = (field: string, value: any) => {
+  const updateFormData = (field: keyof FormData, value: string | File | string[] | {} | null) => {
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
   };
 
-  const handleSubmit = async (preview = false) => {
-    // if (preview) {
-    //   setIsPreview(true);
-    // } else {
+  const handleSubmit = async () => {
     const savedMenuId = await saveMenuToDatabase();
     if (savedMenuId) {
       await handlePayment(savedMenuId);
     }
-    // }
   };
 
   const saveMenuToDatabase = async () => {
@@ -234,21 +240,13 @@ export default function MultiStepForm() {
               </button>
             )}
             {step === steps && (
-              <>
-                {/* <button
-                  onClick={() => handleSubmit(true)}
-                  className="bg-green-500 text-white py-2 px-4 rounded-md"
-                >
-                  Preview
-                </button> */}
-                <button
-                  onClick={() => handleSubmit(false)}
-                  className="bg-blue-500 text-white py-2 px-4 rounded-md"
-                  disabled={loading || !razorpayLoaded}
-                >
-                  {loading ? "Processing..." : "Submit & Pay"}
-                </button>
-              </>
+              <button
+                onClick={handleSubmit}
+                className="bg-blue-500 text-white py-2 px-4 rounded-md"
+                disabled={loading || !razorpayLoaded}
+              >
+                {loading ? "Processing..." : "Submit & Pay"}
+              </button>
             )}
           </div>
         </div>
