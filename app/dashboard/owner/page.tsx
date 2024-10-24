@@ -26,6 +26,13 @@ interface FormData {
   menuId: string;
 }
 
+// Razorpay Response Interface
+interface RazorpayResponse {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+}
+
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -123,7 +130,7 @@ export default function MultiStepForm() {
         name: "Your Company Name",
         description: "Purchase Description",
         order_id: data.id,
-        handler: async function (response) {
+        handler: async function (response: RazorpayResponse) {
           console.log("Payment successful:", response);
           router.push(`/menu-success/${menuId}`);
         },
@@ -249,9 +256,8 @@ export default function MultiStepForm() {
               <button
                 onClick={handleSubmit}
                 className="bg-blue-500 text-white py-2 px-4 rounded-md"
-                disabled={loading || !razorpayLoaded}
               >
-                {loading ? "Processing..." : "Submit & Pay"}
+                Submit
               </button>
             )}
           </div>
