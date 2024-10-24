@@ -9,19 +9,25 @@ import Step4 from "@/Components/Step4";
 import Step5 from "@/Components/Step5";
 import { useRouter } from "next/navigation";
 
+// Define a type for menu items
+interface MenuItem {
+  name: string;
+  price: number;
+  description: string;
+}
+
 interface FormData {
   businessType: string;
   name: string;
   address: string;
   logo: File | null;
   categories: string[];
-  menu: Record<string, any>; // Adjust according to the menu structure
+  menu: MenuItem[]; // Use an array of MenuItem instead of an empty object
   menuId: string;
 }
 
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
-  // const [isPreview, setIsPreview] = useState(false);
   const [loading, setLoading] = useState(false);
   const [razorpayLoaded, setRazorpayLoaded] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -30,7 +36,7 @@ export default function MultiStepForm() {
     address: "",
     logo: null,
     categories: [],
-    menu: {},
+    menu: [], // Initialize as an empty array
     menuId: "",
   });
 
@@ -53,7 +59,7 @@ export default function MultiStepForm() {
   const handleNextStep = () => setStep((prevStep) => prevStep + 1);
   const handlePreviousStep = () => setStep((prevStep) => prevStep - 1);
 
-  const updateFormData = (field: keyof FormData, value: string | File | string[] | {} | null) => {
+  const updateFormData = (field: keyof FormData, value: string | File | string[] | MenuItem[] | null) => {
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
