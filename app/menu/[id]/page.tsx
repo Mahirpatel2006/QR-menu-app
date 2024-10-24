@@ -16,7 +16,7 @@ const MenuPage = async ({ params }: { params: { id: string } }) => {
 
   // Access the fields with the correct key names
   const restaurantName = menuItem?.name || 'Unknown Restaurant';
-  const restaurantAddress = menuItem?.address || 'Address not available';
+  // const restaurantAddress = menuItem?.address || 'Address not available';
   const restaurantLogo = menuItem?.logo || '/path-to-default-logo.jpg';
 
   return (
