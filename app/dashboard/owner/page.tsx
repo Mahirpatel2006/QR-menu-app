@@ -48,7 +48,7 @@ export default function MultiStepForm() {
   });
 
   const steps = 5;
-  const paymentAmount = 5000;
+  const paymentAmount = 46;
   const router = useRouter();
 
   useEffect(() => {
@@ -125,7 +125,7 @@ export default function MultiStepForm() {
       const data = await response.json();
   
       // Ensure `process.env.RAZORPAY_KEY_ID` is defined, or throw an error.
-      const razorpayKey = process.env.RAZORPAY_KEY_ID || '';
+      const razorpayKey = process.env.RAZORPAY_KEY_ID || 'rzp_test_ss1gQkHBKQtpaf';
       if (!razorpayKey) {
         console.error("Razorpay key ID is not set.");
         return;
