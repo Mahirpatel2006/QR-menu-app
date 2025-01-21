@@ -12,16 +12,21 @@ interface Params {
 interface MenuData {
   name: string;
   logo: string;
-  // Add other relevant fields based on your API response
+  items: string[]; // Define items explicitly if included
 }
 
 const MenuSuccessPage = ({ params }: { params: Params }) => {
   const { menuId } = params;
-  const menuLink = `http://localhost:3000/menu/${menuId}`; // Update this for production
+  const menuLink = `http://localhost:3000/menu/${menuId}`; // Update for production
   const canvasRef = useRef<HTMLDivElement | null>(null);
-  const [menuData, setMenuData] = useState<MenuData | null>(null); // Use the defined type
+  const [menuData, setMenuData] = useState<MenuData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [windowSize, setWindowSize] = useState<{ width: number; height: number }>({
+    width: 0,
+    height: 0,
+  });
 
+  // Fetch menu data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,7 +34,7 @@ const MenuSuccessPage = ({ params }: { params: Params }) => {
         if (!response.ok) {
           throw new Error("Error fetching data");
         }
-        const data: MenuData = await response.json(); // Specify the type of data being fetched
+        const data: MenuData = await response.json();
         setMenuData(data);
       } catch (error) {
         console.error("Error:", error);
@@ -39,6 +44,27 @@ const MenuSuccessPage = ({ params }: { params: Params }) => {
 
     fetchData();
   }, [menuId]);
+
+  // Track window size for Confetti
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+      const handleResize = () => {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
 
   const handleDownload = () => {
     const canvas = canvasRef.current?.querySelector("canvas");
@@ -56,7 +82,9 @@ const MenuSuccessPage = ({ params }: { params: Params }) => {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-hidden">
       {/* Confetti Effect */}
-      <Confetti width={window.innerWidth} height={window.innerHeight} numberOfPieces={300} recycle={false} />
+      {windowSize.width > 0 && (
+        <Confetti width={windowSize.width} height={windowSize.height} numberOfPieces={300} recycle={false} />
+      )}
 
       {/* Background Decorative Shapes */}
       <div className="absolute top-0 left-0 w-full h-full">
@@ -97,9 +125,6 @@ const MenuSuccessPage = ({ params }: { params: Params }) => {
         </motion.a>
 
         {/* QR Code Section */}
-
-
-        {/* QR Code Section */}
         <motion.div 
           className="mt-8 flex flex-col items-center"
           ref={canvasRef}
@@ -136,13 +161,11 @@ const MenuSuccessPage = ({ params }: { params: Params }) => {
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               <h2 className="text-lg font-semibold text-[#2c3e50]">Menu Details</h2>
-              {/* <p className="mt-2 text-gray-600">Menu Title: {menuData.name}</p> */}
               <p className="mt-1 text-gray-600">Items: {menuData.items.join(", ")}</p>
             </motion.div>
           )
         )}
       </div>
-
     </div>
   );
 };
