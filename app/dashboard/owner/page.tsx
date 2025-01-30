@@ -82,7 +82,7 @@ export default function MultiStepForm() {
 
   const saveMenuToDatabase = async () => {
     try {
-      const response = await fetch("/api/menus", {
+      const response = await fetch("/api/menus/[id]", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },
