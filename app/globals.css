@@ -1,23 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-bg text-text-primary font-sans antialiased;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary;
+  }
 }
 
 @layer utilities {
@@ -25,43 +18,12 @@ body {
     text-wrap: balance;
   }
 }
-/* globals.css */
 
-/* Floating animation for decorative circles */
-/* globals.css */
-
-/* Floating animation for decorative circles */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float.delay-2000 {
-  animation-delay: 2s;
-}
-
-/* Custom cursor */
-.custom-cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  transition: transform 0.1s ease, background-color 0.2s ease;
-}
-
-a:hover ~ .custom-cursor,
-button:hover ~ .custom-cursor {
-  transform: scale(1.5) translate(-50%, -50%);
-  background-color: rgba(72, 187, 120, 0.7); /* Custom color when hovering */
-}
-
-

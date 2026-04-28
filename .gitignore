@@ -34,3 +34,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Agent and temporary files
+.agent/
+.gemini/
+audit.md
+task.md
+theme.md
+
+# Python
+__pycache__/
+*.py[cod]
