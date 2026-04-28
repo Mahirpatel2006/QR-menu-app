@@ -177,7 +177,7 @@ export default function LandingPage() {
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={stagger}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {features.map(({ icon: Icon, title, desc }, idx) => (
+            {features.map(({ icon: Icon, title, desc }) => (
               <motion.div
                 key={title}
                 variants={fadeIn}
@@ -263,7 +263,7 @@ export default function LandingPage() {
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={stagger}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto items-center"
           >
-            {plans.map((plan, idx) => (
+            {plans.map((plan) => (
               <motion.div
                 key={plan.name}
                 variants={fadeIn}

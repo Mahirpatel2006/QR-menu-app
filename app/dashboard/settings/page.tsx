@@ -1,4 +1,4 @@
-import { Settings, User, Bell, Shield, Palette } from 'lucide-react'
+import { User, Bell, Shield, Palette } from 'lucide-react'
 import Image from 'next/image'
 
 export default function SettingsPage() {

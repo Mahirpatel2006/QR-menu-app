@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { QrCode, ExternalLink, Search } from 'lucide-react'
+import { QrCode, ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 
 export default async function QRCodesPage() {
