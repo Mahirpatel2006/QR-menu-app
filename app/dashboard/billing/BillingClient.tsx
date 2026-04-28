@@ -42,7 +42,7 @@ export function BillingClient({ plan, label, popular }: BillingClientProps) {
 
       // 3. Open Razorpay checkout
       const rzp = new (window as any).Razorpay({
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '',
+        key: process.env.RAZORPAY_KEY_ID || '',
         amount,
         currency,
         name: 'Click2Menu',
