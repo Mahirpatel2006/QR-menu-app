@@ -70,69 +70,49 @@ export default function LandingPage() {
         />
 
 
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-          <div className="flex-1 text-center lg:text-left">
-            <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-              <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold bg-white border border-[#EDE8E0] text-[#1C1410] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-8 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 h-4 text-[#F57363]" />
-                THE NEW STANDARD FOR DIGITAL MENUS
-              </span>
-            </motion.div>
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+            <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold bg-white border border-[#EDE8E0] text-[#1C1410] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-8 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 h-4 text-[#F57363]" />
+              THE NEW STANDARD FOR DIGITAL MENUS
+            </span>
+          </motion.div>
 
-            <motion.h1
-              initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-7xl lg:text-8xl font-bold leading-[1.1] mb-6 sm:mb-8 tracking-tight"
-              style={{ fontFamily: '"Playfair Display SC", serif' }}
-            >
-              Your menu,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F57363] to-[#FF9B8F]">
-                one scan away.
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.2 }}
-              className="text-base sm:text-xl text-[#6B635A] max-w-xl mx-auto lg:mx-0 mb-8 sm:mb-10 leading-relaxed font-medium px-4 lg:px-0"
-            >
-              Create a beautiful, lightning-fast digital menu in minutes. Share it via QR code. Let customers browse seamlessly from their phones.
-            </motion.p>
-
-            <motion.div
-              initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 px-6 lg:px-0"
-            >
-              <Link
-                href="/register"
-                className="group flex items-center justify-center gap-2 bg-[#F57363] text-white font-bold px-8 py-3 sm:py-4 rounded-full hover:bg-[#E05A4A] shadow-[0_8px_30px_rgb(245,115,99,0.3)] hover:shadow-[0_8px_40px_rgb(245,115,99,0.4)] transition-all text-base sm:text-lg w-full sm:w-auto"
-              >
-                Start for free
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="#features"
-                className="flex items-center justify-center gap-2 bg-white border border-[#EDE8E0] text-[#1C1410] font-bold px-8 py-3 sm:py-4 rounded-full hover:bg-[#FAF7F2] transition-all text-base sm:text-lg w-full sm:w-auto shadow-sm"
-              >
-                See how it works
-              </Link>
-            </motion.div>
-          </div>
-          
-          <motion.div 
-            initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.4 }}
-            className="flex-1 w-full max-w-2xl lg:max-w-none relative"
+          <motion.h1
+            initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-7xl lg:text-8xl font-bold leading-[1.1] mb-6 sm:mb-8 tracking-tight"
+            style={{ fontFamily: '"Playfair Display SC", serif' }}
           >
-            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50 transform rotate-1 hover:rotate-0 transition-transform duration-500">
-              <Image 
-                src="/images/hero-illustration.png" 
-                alt="QR Menu Experience" 
-                width={800} 
-                height={600} 
-                className="w-full h-auto object-cover"
-                priority
-              />
-            </div>
-            {/* Decorative element behind image */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-[#F57363]/20 to-[#FF9B8F]/20 rounded-[2.5rem] -z-10 blur-xl" />
+            Your menu,<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F57363] to-[#FF9B8F]">
+              one scan away.
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.2 }}
+            className="text-base sm:text-xl text-[#6B635A] max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-medium px-4"
+          >
+            Create a beautiful, lightning-fast digital menu in minutes. Share it via QR code. Let customers browse seamlessly from their phones.
+          </motion.p>
+
+          <motion.div
+            initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 px-6"
+          >
+            <Link
+              href="/register"
+              className="group flex items-center justify-center gap-2 bg-[#F57363] text-white font-bold px-8 py-3 sm:py-4 rounded-full hover:bg-[#E05A4A] shadow-[0_8px_30px_rgb(245,115,99,0.3)] hover:shadow-[0_8px_40px_rgb(245,115,99,0.4)] transition-all text-base sm:text-lg w-full sm:w-auto"
+            >
+              Start for free
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="#features"
+              className="flex items-center justify-center gap-2 bg-white border border-[#EDE8E0] text-[#1C1410] font-bold px-8 py-3 sm:py-4 rounded-full hover:bg-[#FAF7F2] transition-all text-base sm:text-lg w-full sm:w-auto shadow-sm"
+            >
+              See how it works
+            </Link>
           </motion.div>
         </div>
       </section>
