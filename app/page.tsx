@@ -30,14 +30,30 @@ const stagger = {
 }
 
 export default function LandingPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Click2Menu",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "description": "Create beautiful, contactless digital menus for your restaurant, cafe, or bar. Generate QR codes instantly, manage multiple menus, and track analytics.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#1C1410] overflow-hidden selection:bg-[#F57363]/20" style={{ fontFamily: '"Plus Jakarta Sans", sans-serif' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Navbar */}
       <nav className="flex items-center justify-between px-4 sm:px-6 lg:px-16 py-4 sm:py-5 border-b border-[#EDE8E0] bg-[#FAF7F2]/80 backdrop-blur-md fixed w-full top-0 z-50">
         <Link href="/" className="flex items-center gap-2">
-          <div className="bg-[#F57363] p-1.5 rounded-lg shrink-0">
-            <QrCode className="w-5 h-5 text-white" />
-          </div>
+         
           <span className="text-lg sm:text-xl font-bold tracking-tight" style={{ fontFamily: '"Playfair Display SC", serif', color: '#1C1410' }}>
             Click2Menu
           </span>
