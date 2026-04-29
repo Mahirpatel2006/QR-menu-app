@@ -53,7 +53,6 @@ export default function LandingPage() {
       {/* Navbar */}
       <nav className="flex items-center justify-between px-4 sm:px-6 lg:px-16 py-4 sm:py-5 border-b border-[#EDE8E0] bg-[#FAF7F2]/80 backdrop-blur-md fixed w-full top-0 z-50">
         <Link href="/" className="flex items-center gap-2">
-         
           <span className="text-lg sm:text-xl font-bold tracking-tight" style={{ fontFamily: '"Playfair Display SC", serif', color: '#1C1410' }}>
             Click2Menu
           </span>

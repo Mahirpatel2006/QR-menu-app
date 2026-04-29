@@ -31,6 +31,8 @@ export default async function PublicMenuPage({ params }: { params: { slug: strin
 
   // Format data for themes
   const restaurant = menu.restaurants as any
+  if (!restaurant) notFound()
+
   const categories = ((menu.categories ?? []) as any[])
     .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
     .map(cat => ({
