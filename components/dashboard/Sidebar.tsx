@@ -6,8 +6,7 @@ import {
   LayoutDashboard, 
   UtensilsCrossed, 
   QrCode, 
-  BarChart2, 
-  Settings 
+  BarChart2
 } from 'lucide-react'
 
 const navItems = [

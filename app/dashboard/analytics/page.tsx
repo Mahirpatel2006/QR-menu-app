@@ -1,4 +1,4 @@
-import { BarChart2, TrendingUp, Users, Eye } from 'lucide-react'
+import { TrendingUp, Users, Eye } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 import { AnalyticsChart } from '@/components/dashboard/AnalyticsChart'
 import Image from 'next/image'
